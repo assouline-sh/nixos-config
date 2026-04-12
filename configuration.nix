@@ -79,6 +79,9 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  # Force Electron apps to use native Wayland
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = (with pkgs; [
@@ -87,6 +90,8 @@
     vim
     wl-clipboard
     wtype
+    grim
+    slurp
     virt-viewer
     kitty
     waybar
@@ -95,6 +100,7 @@
     git
     wget
     nodejs
+    procps
   ]) ++ [
     (pkgs.where-is-my-sddm-theme.override {
       themeConfig.General = {
@@ -109,14 +115,14 @@
         passwordFontSize = 48;
         passwordCharacter = "*";
         passwordMask = true;
-        font = "Terminess Nerd Font Mono";
+        font = "Ubuntu Sans Mono";
         showSessionsByDefault = false;
         showUsersByDefault = false;
         usersFontSize = 1;
         sessionsFontSize = 1;
         hideCursor = false;
         cursorBlinkAnimation = true;
-        helpFont = "Terminess Nerd Font Mono";
+        helpFont = "Ubuntu Sans Mono";
         helpFontSize = 1;
       };
     })

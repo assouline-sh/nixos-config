@@ -13,9 +13,14 @@
       url = "github:caelestia-dots/shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { nixpkgs, home-manager, caelestia-shell, ... }: let
+  outputs = { nixpkgs, home-manager, caelestia-shell, spicetify-nix, ... }: let
     system = "x86_64-linux";
     patchedCaelestiaShell = caelestia-shell.packages.${system}.with-cli.overrideAttrs (old: {
       postInstall = (old.postInstall or "") + ''
@@ -45,6 +50,7 @@
           };
           home-manager.sharedModules = [
             caelestia-shell.homeManagerModules.default
+            spicetify-nix.homeManagerModules.default
           ];
         }
       ];

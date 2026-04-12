@@ -13,12 +13,28 @@
     gtk.enable = true;
   };
 
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+    };
+  };
+
   gtk = {
     enable = true;
     iconTheme = {
       name = "Papirus-Dark";
       package = pkgs.papirus-icon-theme;
     };
+    font = {
+      name = "Ubuntu Sans Mono Bold";
+      size = 11;
+    };
+  };
+
+  fonts.fontconfig.defaultFonts = {
+    monospace = [ "Ubuntu Sans Mono" ];
+    sansSerif = [ "Ubuntu Sans Mono" ];
+    serif = [ "Ubuntu Sans Mono" ];
   };
 
   programs.caelestia = {
@@ -53,9 +69,9 @@
       utilities.toasts.chargingChanged = false;
       bar.activeWindow.inverted = true;
       bar.clock = {
-        background = false;
-        showDate = false;
-        showIcon = false;
+        background = true;
+        showDate = true;
+        showIcon = true;
       };
       controlCenter.sizes = {
         heightMult = 0.7;
@@ -80,6 +96,11 @@
         showMicrophone = false;
         showKbLayout = false;
         showLockStatus = true;
+      };
+      appearance = {
+        font.size.scale = 0.75;
+        padding.scale = 0.75;
+        spacing.scale = 0.75;
       };
       border = {
         rounding = 25;
@@ -125,7 +146,7 @@
           capslock_color = "rgb(000000)";
           numlock_color = "rgb(000000)";
           bothlock_color = "rgb(000000)";
-          font_family = "Terminess Nerd Font Mono";
+          font_family = "Ubuntu Sans Mono";
           halign = "center";
           valign = "center";
           position = "0, 0";
@@ -142,7 +163,7 @@
         "XCURSOR_SIZE,20"
       ];
       general = {
-        gaps_in = 4;
+        gaps_in = 2;
         gaps_out = 5;
         border_size = 2;
       };
@@ -172,13 +193,20 @@
       input = {
         kb_layout = "us";
         touchpad.natural_scroll = true;
+        touchpad.tap-to-click = true;
+        touchpad.clickfinger_behavior = true;
       };
       misc.disable_hyprland_logo = true;
       bind = [
+        ", Print, exec, grim ~/Pictures/screenshot-$(date +%Y%m%d-%H%M%S).png"
+        "SHIFT, Print, exec, grim -g \"$(slurp)\" ~/Pictures/screenshot-$(date +%Y%m%d-%H%M%S).png"
         "ALT, N, exec, kitty"
         "ALT, Q, exec, hyprctl -i 0 activewindow -j | jq -r '.pid' | xargs kill"
         "ALT, W, exec, if [ \"$(hyprctl -i 0 activewindow -j | jq -r '.class')\" = \"firefox\" ]; then hyprctl -i 0 dispatch sendshortcut CTRL,w,activewindow; else hyprctl -i 0 dispatch killactive; fi"
         "ALT, T, exec, if [ \"$(hyprctl -i 0 activewindow -j | jq -r '.class')\" = \"firefox\" ]; then hyprctl -i 0 dispatch sendshortcut CTRL,t,activewindow; fi"
+        "ALT, R, exec, if [ \"$(hyprctl -i 0 activewindow -j | jq -r '.class')\" = \"firefox\" ]; then hyprctl -i 0 dispatch sendshortcut ,F5,activewindow; fi"
+        "ALT SHIFT, R, exec, if [ \"$(hyprctl -i 0 activewindow -j | jq -r '.class')\" = \"firefox\" ]; then hyprctl -i 0 dispatch sendshortcut CTRL SHIFT,r,activewindow; fi"
+        "ALT SHIFT, T, exec, if [ \"$(hyprctl -i 0 activewindow -j | jq -r '.class')\" = \"firefox\" ]; then hyprctl -i 0 dispatch sendshortcut CTRL SHIFT,t,activewindow; fi"
         "ALT, M, movetoworkspacesilent, special:minimized"
         "SUPER, M, exit"
         "SUPER, V, togglefloating"
@@ -194,12 +222,14 @@
         "ALT SHIFT, 3, movetoworkspace, 3"
         "ALT SHIFT, 4, movetoworkspace, 4"
         "ALT SHIFT, 5, movetoworkspace, 5"
-        "SUPER, h, movefocus, l"
-        "SUPER, l, movefocus, r"
-        "SUPER, k, movefocus, u"
-        "SUPER, j, movefocus, d"
+        "ALT, h, movefocus, l"
+        "ALT, l, movefocus, r"
+        "ALT, k, movefocus, u"
+        "ALT, j, movefocus, d"
         "SUPER SHIFT, L, exec, hyprlock"
         "ALT, TAB, exec, list=$(hyprctl -i 0 clients -j | jq -r '.[] | select(.workspace.name == \"special:minimized\") | \"\\(.address) \\(.class) — \\(.title)\"'); [ -n \"$list\" ] && echo \"$list\" | wofi --dmenu --prompt 'Minimized Windows' | awk '{print $1}' | xargs -I{} hyprctl -i 0 dispatch movetoworkspacesilent e+0,address:{}"
+        "ALT, equal, resizeactive, 40 40"
+        "ALT, minus, resizeactive, -40 -40"
       ];
       bindm = [
         "SUPER, mouse:272, movewindow"
@@ -209,12 +239,25 @@
         "float on, match:class org.gnome.Nautilus"
         "size 700 450, match:class org.gnome.Nautilus"
         "center on, match:class org.gnome.Nautilus"
+        "opacity 0.85, match:class org.gnome.Nautilus"
         "float on, match:class org.keepassxc.KeePassXC"
         "center on, match:class org.keepassxc.KeePassXC"
         "size 700 450, match:class xdg-desktop-portal-gtk"
         "center on, match:class xdg-desktop-portal-gtk"
         "size 700 450, match:title (Open|Save|Select|Choose|Upload|File)"
         "center on, match:title (Open|Save|Select|Choose|Upload|File)"
+        "workspace 1 silent, match:class firefox"
+        "workspace 2 silent, match:class kitty"
+        "opacity 0.75, match:class spotify"
+        "workspace 4 silent, match:class spotify"
+        "opacity 0.75, match:class vesktop"
+        "workspace 5 silent, match:class vesktop"
+      ];
+      exec-once = [
+        "firefox"
+        "kitty"
+        "spotify"
+        "vesktop"
       ];
     };
   };
@@ -297,10 +340,14 @@
   programs.kitty = {
     enable = true;
     font = {
-      name = "Terminess Nerd Font Mono";
-      size = 13;
+      name = "Ubuntu Sans Mono";
+      size = 11;
     };
     settings = {
+      # Font
+      bold_font = "Ubuntu Sans Mono Bold";
+      italic_font = "Ubuntu Sans Mono Italic";
+      bold_italic_font = "Ubuntu Sans Mono Bold Italic";
       # Appearance
       shell = "/run/current-system/sw/bin/zsh";
       background_opacity = "0.65";
@@ -311,6 +358,9 @@
       enable_audio_bell = false;
       linux_display_server = "wayland";
       wayland_enable_notifications = "no";
+      notify_on_cmd_finish = "never";
+      bell_on_tab = "no";
+      visual_bell_duration = 0;
       confirm_os_window_close = 0;
       hide_window_decorations = true;
 
@@ -395,6 +445,8 @@
   home.packages = with pkgs; [
     terminus_font
     nerd-fonts.terminess-ttf
+    nerd-fonts.ubuntu-mono
+    ubuntu-sans-mono
     material-symbols
     zsh-autosuggestions
     zsh-syntax-highlighting
@@ -413,8 +465,7 @@
     lua-language-server
     nil
     claude-code
-    spotify
-    discord
+    vesktop
     keepassxc
     obsidian
     btop
@@ -425,5 +476,32 @@
     tree
   ];
 
-  
+  programs.spicetify = {
+    enable = true;
+    colorScheme = "custom";
+    customColorScheme = {
+      text = "e5e4f0";
+      subtext = "aaaab5";
+      main = "0d0e12";
+      sidebar = "0c0d11";
+      player = "0d0e12";
+      card = "1e1f26";
+      shadow = "000000";
+      selected-row = "24252e";
+      button = "bbc5ee";
+      button-active = "c9d3fd";
+      button-disabled = "464750";
+      tab-active = "bbc5ee";
+      notification = "475174";
+      notification-error = "871f21";
+      misc = "74757f";
+      play-button = "bbc5ee";
+      play-button-active = "c9d3fd";
+      progress-fg = "bbc5ee";
+      progress-bg = "24252e";
+      heart = "bbc5ee";
+      pagelink-active = "bbc5ee";
+      radio-btn-active = "bbc5ee";
+    };
+  };
 }
