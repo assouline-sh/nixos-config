@@ -1,0 +1,14 @@
+/* Arrow Panels / Dropdown Menus */
+
+.panel-arrowcontent,
+panel > .panel-arrowcontainer > .panel-arrowcontent {
+  background: var(--bf-menupopup-bg) !important;
+  color: var(--bf-menupopup-color) !important;
+  border: 1px solid #24252e88 !important;
+  border-radius: 10px !important;
+  backdrop-filter: blur(var(--bf-backdrop-blur)) !important;
+}
+
+panelview {
+  background: transparent !important;
+}

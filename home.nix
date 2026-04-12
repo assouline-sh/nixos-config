@@ -176,8 +176,10 @@
       misc.disable_hyprland_logo = true;
       bind = [
         "ALT, N, exec, kitty"
-        "ALT, Q, killactive"
-        "ALT, W, movetoworkspacesilent, special:minimized"
+        "ALT, Q, exec, hyprctl -i 0 activewindow -j | jq -r '.pid' | xargs kill"
+        "ALT, W, exec, if [ \"$(hyprctl -i 0 activewindow -j | jq -r '.class')\" = \"firefox\" ]; then hyprctl -i 0 dispatch sendshortcut CTRL,w,activewindow; else hyprctl -i 0 dispatch killactive; fi"
+        "ALT, T, exec, if [ \"$(hyprctl -i 0 activewindow -j | jq -r '.class')\" = \"firefox\" ]; then hyprctl -i 0 dispatch sendshortcut CTRL,t,activewindow; fi"
+        "ALT, M, movetoworkspacesilent, special:minimized"
         "SUPER, M, exit"
         "SUPER, V, togglefloating"
         "SUPER, F, fullscreen"
@@ -197,6 +199,7 @@
         "SUPER, k, movefocus, u"
         "SUPER, j, movefocus, d"
         "SUPER SHIFT, L, exec, hyprlock"
+        "ALT, TAB, exec, list=$(hyprctl -i 0 clients -j | jq -r '.[] | select(.workspace.name == \"special:minimized\") | \"\\(.address) \\(.class) — \\(.title)\"'); [ -n \"$list\" ] && echo \"$list\" | wofi --dmenu --prompt 'Minimized Windows' | awk '{print $1}' | xargs -I{} hyprctl -i 0 dispatch movetoworkspacesilent e+0,address:{}"
       ];
       bindm = [
         "SUPER, mouse:272, movewindow"
@@ -204,8 +207,14 @@
       ];
       windowrule = [
         "float on, match:class org.gnome.Nautilus"
-        "size 900 600, match:class org.gnome.Nautilus"
+        "size 700 450, match:class org.gnome.Nautilus"
         "center on, match:class org.gnome.Nautilus"
+        "float on, match:class org.keepassxc.KeePassXC"
+        "center on, match:class org.keepassxc.KeePassXC"
+        "size 700 450, match:class xdg-desktop-portal-gtk"
+        "center on, match:class xdg-desktop-portal-gtk"
+        "size 700 450, match:title (Open|Save|Select|Choose|Upload|File)"
+        "center on, match:title (Open|Save|Select|Choose|Upload|File)"
       ];
     };
   };

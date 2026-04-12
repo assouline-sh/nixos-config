@@ -1,0 +1,97 @@
+/* Tab Bar */
+
+/* Tab strip background */
+#titlebar {
+  background: var(--bf-tab-toolbar-bg) !important;
+  -moz-box-ordinal-group: 1;
+}
+
+#TabsToolbar {
+  background: transparent !important;
+}
+
+.toolbar-items {
+  background: transparent !important;
+}
+
+#tabbrowser-tabs {
+  border: none !important;
+}
+
+/* Individual tabs */
+.tabbrowser-tab {
+  margin: 2px 1px !important;
+  border: none !important;
+  min-height: var(--bf-tab-height) !important;
+}
+
+.tab-background {
+  border: none !important;
+  border-radius: var(--bf-tab-border-radius) !important;
+  background: transparent !important;
+  margin-block: 2px !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* Selected tab - matches Kitty active tab (#bbc5ee bg, #0d0e12 text) */
+.tabbrowser-tab[selected="true"] .tab-background {
+  background: #bbc5ee22 !important;
+  border-bottom: 2px solid #bbc5ee !important;
+}
+
+/* Hovered tab */
+.tabbrowser-tab:hover:not([selected="true"]) .tab-background {
+  background: var(--bf-hover) !important;
+}
+
+/* Tab text */
+.tab-label {
+  color: var(--bf-tab-color) !important;
+  font-size: var(--bf-tab-font-size) !important;
+}
+
+.tabbrowser-tab[selected="true"] .tab-label {
+  color: #bbc5ee !important;
+  font-weight: bold !important;
+}
+
+/* Tab close button */
+.tab-close-button {
+  fill: var(--bf-icon-color) !important;
+  border-radius: 50% !important;
+}
+
+.tab-close-button:hover {
+  background: var(--bf-hover) !important;
+}
+
+/* Sound playing indicator */
+.tab-icon-sound {
+  fill: var(--bf-tab-soundplaying-bg) !important;
+}
+
+/* New tab button */
+#tabs-newtab-button,
+#new-tab-button {
+  fill: var(--bf-icon-color) !important;
+}
+
+#tabs-newtab-button:hover,
+#new-tab-button:hover {
+  background: var(--bf-hover) !important;
+  border-radius: var(--bf-tab-border-radius) !important;
+}
+
+/* Tab separator */
+.tabbrowser-tab::after,
+.tabbrowser-tab::before {
+  border: none !important;
+  opacity: 0 !important;
+}
+
+/* Compact mode */
+:root[uidensity="compact"] .tabbrowser-tab {
+  margin: 1px 1px !important;
+  min-height: 28px !important;
+}

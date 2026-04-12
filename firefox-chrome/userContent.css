@@ -1,0 +1,14 @@
+/* Style about:blank and new tab */
+@import url('userChrome.css');
+
+@-moz-document url("about:blank"), url("about:newtab"), url("about:home") {
+  body {
+    background-color: #0d0e12 !important;
+  }
+}
+
+/* Minimal scrollbar */
+:root {
+  scrollbar-width: thin !important;
+  scrollbar-color: #24252e88 transparent !important;
+}

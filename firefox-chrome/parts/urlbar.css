@@ -1,0 +1,98 @@
+/* URL Bar */
+
+/* URL bar container */
+#urlbar {
+  max-width: 70% !important;
+  margin: 0 15% !important;
+  font-size: var(--bf-urlbar-font-size) !important;
+}
+
+/* URL bar background */
+#urlbar-background {
+  background: var(--bf-urlbar-bg) !important;
+  border: none !important;
+  border-radius: var(--bf-urlbar-radius) !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* URL bar text */
+#urlbar-input {
+  color: var(--bf-urlbar-color) !important;
+}
+
+/* Focused/open URL bar */
+#urlbar[focused="true"] > #urlbar-background,
+#urlbar[open="true"] > #urlbar-background {
+  background: var(--bf-urlbar-focused-bg) !important;
+  backdrop-filter: blur(var(--bf-backdrop-blur)) !important;
+  border-radius: var(--bf-urlbar-radius) !important;
+}
+
+/* URL bar results/dropdown */
+.urlbarView {
+  background: transparent !important;
+}
+
+.urlbarView-body-inner {
+  background: transparent !important;
+}
+
+.urlbarView-row {
+  border-radius: 6px !important;
+  padding: 4px 8px !important;
+}
+
+.urlbarView-row:hover,
+.urlbarView-row[selected] {
+  background: var(--bf-hover) !important;
+}
+
+.urlbarView-row-inner {
+  color: var(--bf-urlbar-results-color) !important;
+}
+
+/* URL results - URL text */
+.urlbarView-url {
+  color: var(--bf-urlbar-results-url-color) !important;
+  font-size: var(--bf-urlbar-results-font-size) !important;
+}
+
+/* URL results - action text */
+.urlbarView-action {
+  color: var(--bf-icon-color) !important;
+}
+
+/* Switch to tab */
+.urlbarView-action[switchTab] {
+  color: var(--bf-urlbar-switch-tab-color) !important;
+}
+
+/* Bookmark results */
+.urlbarView-type-icon[bookmark] {
+  fill: var(--bf-urlbar-bookmark-color) !important;
+}
+
+/* Results container when open */
+#urlbar[open="true"] > .urlbarView > .urlbarView-body-outer {
+  background: var(--bf-urlbar-results-bg) !important;
+  border-radius: 0 0 var(--bf-urlbar-radius) var(--bf-urlbar-radius) !important;
+  backdrop-filter: blur(var(--bf-backdrop-blur)) !important;
+}
+
+/* URL bar placeholder */
+#urlbar-input::placeholder {
+  color: var(--bf-icon-color) !important;
+  opacity: 0.7 !important;
+}
+
+/* Identity box (site info icon) */
+#identity-box {
+  fill: var(--bf-icon-color) !important;
+}
+
+/* Hide extension name label in URL bar (e.g. "Extension (NightTab)") */
+#identity-icon-label,
+#identity-box .identity-label-container {
+  display: none !important;
+}

@@ -1,0 +1,50 @@
+/* Navigation Bar / Toolbar */
+
+#nav-bar {
+  background: var(--bf-navbar-bg) !important;
+  padding: var(--bf-navbar-padding) !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Toolbar buttons */
+#nav-bar .toolbarbutton-1 {
+  fill: var(--bf-icon-color) !important;
+  color: var(--bf-icon-color) !important;
+}
+
+#nav-bar .toolbarbutton-1:hover {
+  background: var(--bf-hover) !important;
+  border-radius: var(--bf-tab-border-radius) !important;
+}
+
+#nav-bar .toolbarbutton-1:active {
+  background: var(--bf-active) !important;
+}
+
+/* Back/Forward buttons */
+#back-button,
+#forward-button {
+  fill: var(--bf-icon-color) !important;
+}
+
+/* Remove nav-bar border */
+#navigator-toolbox {
+  border-bottom: none !important;
+  background: transparent !important;
+}
+
+#navigator-toolbox::after {
+  border: none !important;
+}
+
+/* PersonalToolbar (bookmarks bar) */
+#PersonalToolbar {
+  background: transparent !important;
+  color: var(--bf-color) !important;
+}
+
+/* Hide import bookmarks button */
+#import-button {
+  display: none !important;
+}

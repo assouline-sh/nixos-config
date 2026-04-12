@@ -1,0 +1,13 @@
+/* Sidebar */
+
+#sidebar-box {
+  background: var(--bf-sidebar-bg) !important;
+  color: var(--bf-sidebar-color) !important;
+  border: none !important;
+  backdrop-filter: blur(var(--bf-backdrop-blur)) !important;
+}
+
+#sidebar-header {
+  background: transparent !important;
+  border: none !important;
+}

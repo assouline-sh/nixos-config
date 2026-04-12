@@ -1,0 +1,86 @@
+/* Caelestia Color Scheme - Transparent/Blurred */
+/* Matched to Kitty terminal (0.65 opacity, 32px blur) */
+/* Colors from wallpaper: deep blacks, muted blues, purple/teal accents */
+
+:root {
+  --bf-moz-appearance: none !important;
+
+  /* Blur - match Kitty's 32px */
+  --bf-backdrop-blur: 32px;
+
+  /* Accent - primary periwinkle */
+  --bf-accent-bg: #bbc5eecc;
+
+  /* Blank page - match terminal bg */
+  --bf-blank-page-bg: #0d0e12;
+
+  /* URL bar */
+  --bf-urlbar-radius: 10px;
+  --bf-urlbar-results-font-size: 12pt;
+  --bf-urlbar-font-size: 12pt;
+  --bf-urlbar-switch-tab-color: #9cceff;
+  --bf-urlbar-bookmark-color: #44def5;
+
+  /* Navbar */
+  --bf-navbar-padding: 6px;
+
+  /* Tabs - match Kitty tab style */
+  --bf-tab-selected-bg: #bbc5ee30;
+  --bf-tab-font-size: 11pt;
+  --bf-tab-height: 36px;
+  --bf-tab-border-radius: 8px;
+  --bf-tab-soundplaying-bg: #a8a2eecc;
+}
+
+/* Dark mode - primary theme */
+:root,
+:root:-moz-lwtheme-brighttext {
+  --bf-main-window: transparent;
+  --bf-bg: transparent;
+  --bf-color: #e5e4f0;
+  --bf-hover: #24252e66;
+  --bf-active: #24252eaa;
+  --bf-icon-color: #74757f;
+  --bf-tab-toolbar-bg: transparent;
+  --bf-tab-selected-color: #bbc5ee;
+  --bf-tab-color: #74757f;
+  --bf-navbar-bg: transparent;
+  --bf-urlbar-bg: #18192066;
+  --bf-urlbar-color: #e5e4f0;
+  --bf-urlbar-focused-bg: #121318cc;
+  --bf-urlbar-results-bg: #0d0e12dd;
+  --bf-urlbar-results-color: #e5e4f0;
+  --bf-urlbar-results-url-color: #acc8ff;
+  --bf-sidebar-bg: #0d0e1288;
+  --bf-sidebar-color: #e5e4f0;
+  --bf-menupopup-bg: #0d0e12ee;
+  --bf-menupopup-color: #e5e4f0;
+  --bf-findbar-bg: #0d0e12ee;
+  --bf-findbar-color: #e5e4f0;
+}
+
+/* Light mode fallback */
+:root:-moz-lwtheme-darktext {
+  --bf-main-window: transparent;
+  --bf-bg: transparent;
+  --bf-color: #0d0e12;
+  --bf-hover: #c1c5dd44;
+  --bf-active: #c1c5dd88;
+  --bf-icon-color: #74757f;
+  --bf-tab-toolbar-bg: #e5e4f044;
+  --bf-tab-selected-color: #535e82;
+  --bf-tab-color: #74757f;
+  --bf-navbar-bg: transparent;
+  --bf-urlbar-bg: #e5e4f066;
+  --bf-urlbar-color: #0d0e12;
+  --bf-urlbar-focused-bg: #e5e4f0cc;
+  --bf-urlbar-results-bg: #e5e4f0dd;
+  --bf-urlbar-results-color: #0d0e12;
+  --bf-urlbar-results-url-color: #535e82;
+  --bf-sidebar-bg: #e5e4f088;
+  --bf-sidebar-color: #0d0e12;
+  --bf-menupopup-bg: #e5e4f0ee;
+  --bf-menupopup-color: #0d0e12;
+  --bf-findbar-bg: #e5e4f0ee;
+  --bf-findbar-color: #0d0e12;
+}

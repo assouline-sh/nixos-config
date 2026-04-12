@@ -69,7 +69,7 @@
   users.users.kud = {
     isNormalUser = true;
     description = "kud";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
     packages = with pkgs; [];
   };
   
@@ -86,6 +86,8 @@
     firefox
     vim
     wl-clipboard
+    wtype
+    virt-viewer
     kitty
     waybar
     wofi
@@ -100,7 +102,7 @@
         basicTextColor = "#000000";
         passwordInputBackground = "#000000";
         passwordInputCursorVisible = true;
-        passwordCursorColor = "#bbc5ee";
+        passwordCursorColor = "#44def5";
         passwordTextColor = "#ffffff";
         passwordInputRadius = 0;
         passwordInputWidth = 0.3;
@@ -146,6 +148,9 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.11"; # Did you read the comment?
+
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
 
   programs.hyprland.enable = true;
   programs.hyprland.withUWSM = true;

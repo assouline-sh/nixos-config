@@ -1,0 +1,24 @@
+/* Find Bar */
+
+findbar {
+  background: var(--bf-findbar-bg) !important;
+  color: var(--bf-findbar-color) !important;
+  border: none !important;
+  backdrop-filter: blur(var(--bf-backdrop-blur)) !important;
+}
+
+findbar .findbar-textbox {
+  background: var(--bf-urlbar-bg) !important;
+  color: var(--bf-findbar-color) !important;
+  border: none !important;
+  border-radius: 6px !important;
+}
+
+findbar toolbarbutton {
+  color: var(--bf-findbar-color) !important;
+}
+
+findbar toolbarbutton:hover {
+  background: var(--bf-hover) !important;
+  border-radius: 6px !important;
+}
