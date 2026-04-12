@@ -442,6 +442,28 @@
   
   fonts.fontconfig.enable = true;
 
+  home.file.".tmux.conf".source = ./.tmux.conf;
+
+  xdg.configFile = {
+    "nvim" = { source = ./nvim; recursive = true; };
+    "vesktop/themes/caelestia.theme.css".source = ./vesktop/caelestia.theme.css;
+    "btop/themes/caelestia.theme".source = ./btop/caelestia.theme;
+    "wofi/config".source = ./wofi/config;
+    "wofi/style.css".source = ./wofi/style.css;
+    "fuzzel/fuzzel.ini".source = ./fuzzel/fuzzel.ini;
+    "cava/config".source = ./cava/config;
+    "hypr/scheme/current.conf".source = ./hypr-scheme/current.conf;
+    "gtk-3.0/gtk.css".source = ./gtk-3.0/gtk.css;
+    "gtk-3.0/thunar.css".source = ./gtk-3.0/thunar.css;
+    "gtk-4.0/gtk.css".source = ./gtk-4.0/gtk.css;
+    "gtk-4.0/nautilus.css".source = ./gtk-4.0/nautilus.css;
+    "gtk-4.0/thunar.css".source = ./gtk-4.0/thunar.css;
+    "qt5ct/qt5ct.conf".source = ./qt5ct/qt5ct.conf;
+    "qt5ct/colors/caelestia.colors".source = ./qt5ct/colors/caelestia.colors;
+    "qt6ct/qt6ct.conf".source = ./qt6ct/qt6ct.conf;
+    "qt6ct/colors/caelestia.colors".source = ./qt6ct/colors/caelestia.colors;
+  };
+
   home.packages = with pkgs; [
     terminus_font
     nerd-fonts.terminess-ttf
