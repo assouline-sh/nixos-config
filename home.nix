@@ -68,6 +68,10 @@
         networkWidth = 220;
         kbLayoutWidth = 200;
       };
+      bar.tray.hiddenIcons = [
+        "spotify-client"
+        "chrome_status_icon_1"
+      ];
       bar.status = {
         showBattery = true;
         showNetwork = true;
