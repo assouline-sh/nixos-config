@@ -33,6 +33,7 @@
         cp ${./patches/launcher-contentlist.qml} $out/share/caelestia-shell/modules/launcher/ContentList.qml
         cp ${./patches/toggles.qml} $out/share/caelestia-shell/modules/utilities/cards/Toggles.qml
         cp ${./patches/lock-surface.qml} $out/share/caelestia-shell/modules/lock/LockSurface.qml
+        cp ${./patches/icons.qml} $out/share/caelestia-shell/utils/Icons.qml
       '';
     });
   in {
