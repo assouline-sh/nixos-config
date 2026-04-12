@@ -1,0 +1,10 @@
+width=500
+height=300
+location=center
+show=dmenu
+allow_markup=true
+insensitive=true
+prompt=
+no_actions=true
+hide_scroll=true
+columns=1

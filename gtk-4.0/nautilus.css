@@ -1,0 +1,219 @@
+/* Nautilus theme — transparent, matching system scheme */
+
+/* =============================================================================
+   Global Resets
+   ============================================================================= */
+
+.nautilus-window * {
+    outline: none;
+}
+
+/* =============================================================================
+   Window & Background
+   ============================================================================= */
+
+.nautilus-window.background {
+    background: transparent;
+}
+
+.nautilus-window .titlebar {
+    background: transparent;
+}
+
+/* =============================================================================
+   Header Bar
+   ============================================================================= */
+
+.nautilus-window headerbar {
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    padding: 8px 0 4px 0;
+}
+
+.nautilus-window headerbar button {
+    transition: all ease 300ms;
+}
+
+.nautilus-window headerbar button:hover {
+    background: alpha(#bbc5ee, 0.08);
+}
+
+.nautilus-window headerbar button:checked,
+.nautilus-window headerbar button:active {
+    background: alpha(#bbc5ee, 0.15);
+    color: #bbc5ee;
+}
+
+/* =============================================================================
+   Path Bar
+   ============================================================================= */
+
+.nautilus-window .path-bar button {
+    background: transparent;
+    border: none;
+    transition: all ease 300ms;
+}
+
+.nautilus-window .path-bar button:checked {
+    background: alpha(#bbc5ee, 0.15);
+    color: #bbc5ee;
+}
+
+.nautilus-window .path-bar button:not(:checked):hover {
+    background: alpha(#bbc5ee, 0.08);
+    color: alpha(#bbc5ee, 0.8);
+}
+
+/* =============================================================================
+   Sidebar Navigation
+   ============================================================================= */
+
+.nautilus-window .sidebar-pane,
+.nautilus-window placessidebar {
+    background: transparent;
+    border: none;
+    padding: 0 8px;
+}
+
+.nautilus-window placessidebar row {
+    border-radius: 10px;
+    padding: 4px 8px;
+    transition: all ease 300ms;
+}
+
+.nautilus-window placessidebar row:hover {
+    background: alpha(#e5e4f0, 0.1);
+}
+
+.nautilus-window placessidebar row:selected {
+    background: alpha(#bbc5ee, 0.15);
+    color: #bbc5ee;
+}
+
+/* Navigation pane (new Nautilus GTK4 sidebar) */
+.nautilus-window .navigation-sidebar {
+    background: transparent;
+    border: none;
+}
+
+.nautilus-window .navigation-sidebar row {
+    border-radius: 10px;
+    transition: all ease 300ms;
+}
+
+.nautilus-window .navigation-sidebar row:hover {
+    background: alpha(#e5e4f0, 0.1);
+}
+
+.nautilus-window .navigation-sidebar row:selected {
+    background: alpha(#bbc5ee, 0.15);
+    color: #bbc5ee;
+}
+
+/* =============================================================================
+   Content / File View
+   ============================================================================= */
+
+.nautilus-window .view,
+.nautilus-window gridview,
+.nautilus-window listview,
+.nautilus-window columnview {
+    background: transparent;
+}
+
+.nautilus-window .content-pane {
+    background: alpha(#121318, 0.6);
+    border-radius: 15px;
+    margin: 4px 10px 10px 0;
+    padding: 8px;
+}
+
+/* File items */
+.nautilus-window gridview child:hover,
+.nautilus-window listview row:hover {
+    background: alpha(#e5e4f0, 0.08);
+    border-radius: 10px;
+}
+
+.nautilus-window gridview child:selected,
+.nautilus-window listview row:selected {
+    background: alpha(#bbc5ee, 0.15);
+    border-radius: 10px;
+}
+
+.nautilus-window gridview child:selected label,
+.nautilus-window listview row:selected {
+    color: #bbc5ee;
+}
+
+/* Rubberband selection */
+.nautilus-window rubberband,
+.nautilus-window .rubberband {
+    background-color: alpha(#bbc5ee, 0.15);
+    border: 1px solid alpha(#bbc5ee, 0.3);
+}
+
+/* =============================================================================
+   Separator between sidebar and content
+   ============================================================================= */
+
+.nautilus-window paned > separator,
+.nautilus-window separator {
+    background: transparent;
+    min-width: 1px;
+}
+
+/* =============================================================================
+   Status Bar / Bottom Bar
+   ============================================================================= */
+
+.nautilus-window actionbar {
+    background: transparent;
+    border: none;
+}
+
+/* =============================================================================
+   Search
+   ============================================================================= */
+
+.nautilus-window searchbar {
+    background: transparent;
+}
+
+/* =============================================================================
+   Popovers & Menus
+   ============================================================================= */
+
+.nautilus-window popover,
+.nautilus-window popover.background {
+    background: alpha(#0d0e12, 0.95);
+}
+
+/* =============================================================================
+   Scrollbars
+   ============================================================================= */
+
+.nautilus-window scrollbar slider {
+    background: alpha(#e5e4f0, 0.3);
+    border-radius: 10px;
+    min-width: 4px;
+}
+
+.nautilus-window scrollbar slider:hover {
+    background: alpha(#e5e4f0, 0.5);
+}
+
+/* =============================================================================
+   Animation
+   ============================================================================= */
+
+@keyframes nautilus-fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.nautilus-window .content-pane {
+    animation: nautilus-fade 400ms ease forwards;
+    animation-delay: 100ms;
+}

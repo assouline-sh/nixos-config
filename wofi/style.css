@@ -1,0 +1,54 @@
+window {
+  background-color: rgba(13, 14, 18, 0.85);
+  border-radius: 16px;
+  border: 1px solid rgba(187, 197, 238, 0.15);
+  font-family: "Terminess Nerd Font Mono";
+  font-size: 14px;
+}
+
+#outer-box {
+  margin: 0;
+  padding: 10px;
+}
+
+#input {
+  background-color: rgba(24, 25, 32, 0.8);
+  color: #e5e4f0;
+  border: 1px solid rgba(187, 197, 238, 0.1);
+  border-radius: 10px;
+  padding: 8px 14px;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+#input:focus {
+  border-color: rgba(187, 197, 238, 0.3);
+}
+
+#scroll {
+  margin: 0;
+}
+
+#inner-box {
+  padding: 0;
+}
+
+#entry {
+  padding: 8px 14px;
+  border-radius: 8px;
+  color: #74757f;
+  transition: all 0.2s ease;
+}
+
+#entry:selected {
+  background-color: rgba(187, 197, 238, 0.12);
+  color: #bbc5ee;
+}
+
+#text {
+  color: inherit;
+}
+
+#text:selected {
+  color: #bbc5ee;
+}
