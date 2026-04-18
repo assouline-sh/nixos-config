@@ -210,7 +210,7 @@
         "ALT, M, movetoworkspacesilent, special:minimized"
         "SUPER, M, exit"
         "SUPER, V, togglefloating"
-        "SUPER, F, fullscreen"
+        "ALT, F, fullscreen"
         "ALT, space, exec, caelestia-shell ipc call drawers toggle launcher"
         "ALT, 1, workspace, 1"
         "ALT, 2, workspace, 2"
@@ -227,6 +227,7 @@
         "ALT, k, movefocus, u"
         "ALT, j, movefocus, d"
         "SUPER SHIFT, L, exec, hyprlock"
+        "CTRL, L, exec, hyprlock"
         "ALT, TAB, exec, list=$(hyprctl -i 0 clients -j | jq -r '.[] | select(.workspace.name == \"special:minimized\") | \"\\(.address) \\(.class) — \\(.title)\"'); [ -n \"$list\" ] && echo \"$list\" | wofi --dmenu --prompt 'Minimized Windows' | awk '{print $1}' | xargs -I{} hyprctl -i 0 dispatch movetoworkspacesilent e+0,address:{}"
         "ALT, equal, resizeactive, 40 40"
         "ALT, minus, resizeactive, -40 -40"
@@ -293,7 +294,7 @@
   programs.starship = {
     enable = true;
     settings = {
-      format = "$username$hostname$directory$git_branch$git_status$nix_shell$cmd_duration$line_break$character";
+      format = "$username$hostname$directory$git_branch$git_status$nix_shell$python$cmd_duration$line_break$character";
       add_newline = true;
       character = {
         success_symbol = "[\\$](bold #bbc5ee)";
@@ -333,6 +334,14 @@
         symbol = " ";
         style = "bold #977cff";
         format = "via [$symbol$state]($style) ";
+      };
+      python = {
+        symbol = " ";
+        style = "bold #f5d547";
+        format = "via [$symbol$virtualenv]($style) ";
+        detect_extensions = [];
+        detect_files = [];
+        detect_folders = [];
       };
     };
   };

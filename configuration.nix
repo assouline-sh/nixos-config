@@ -101,6 +101,8 @@
     wget
     nodejs
     procps
+    rclone
+    audacity
   ]) ++ [
     (pkgs.where-is-my-sddm-theme.override {
       themeConfig.General = {
